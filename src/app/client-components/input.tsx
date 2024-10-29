@@ -7,7 +7,13 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
 
     const LS_SHOPPING_LIST = '**LsSHoppingList**'
 
-    const storedItems: ShoppingList = JSON.parse(localStorage.getItem(LS_SHOPPING_LIST) || '[]')
+    let storedItems: ShoppingList = [];
+
+    try {
+        storedItems = JSON.parse(localStorage.getItem(LS_SHOPPING_LIST) || '[]')
+      } catch (error) {
+        console.error(error)
+      }
 
     const [items, setItems] = useState(storedItems);
 
