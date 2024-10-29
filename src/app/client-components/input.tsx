@@ -34,8 +34,8 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
         setInputVal('');
     }
 
-    const filterList = (e: KeyboardEvent<HTMLInputElement>) => {
-        setInputTemporary(e.target.value)
+    const filterList = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        setInputTemporary(e.currentTarget.value)
     }
 
     return (

@@ -14,7 +14,7 @@ export type ShoppingList = Array<ShoppingItem>
 
 export default function Home() {
 
-  const [shoppingList, addToShoppingList]: [ShoppingList, Dispatch<SetStateAction<ShoppingList>>] = useState([]);
+  const [shoppingList, addToShoppingList]: [ShoppingList, Dispatch<SetStateAction<ShoppingList>>] = useState<ShoppingList>([]);
 
   const addToList = (item : ShoppingItem) => {
     addToShoppingList([...shoppingList, item]);
