@@ -11,7 +11,7 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
     
       const fetchData = async () => {
         try {
-          const response = await fetch('http://localhost:3000/list-products');
+          const response = await fetch('/list-products');
           const result = await response.json();
           setItems(result.products.rows);
         } catch (error) {
