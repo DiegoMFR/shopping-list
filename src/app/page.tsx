@@ -1,7 +1,7 @@
 'use client'
 
 import { Dispatch, SetStateAction, useState } from "react";
-import Input from "./client-components/input";
+import Input from "./(client-components)/input";
 
 export type ShoppingItem = {
   name: string,
