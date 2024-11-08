@@ -38,7 +38,7 @@ export async function getProductsForList(
 
   console.log("222", response);
 
-  return response;
+  return response as (ShoppingItem | null)[];
 }
 
 export async function getProductById(
