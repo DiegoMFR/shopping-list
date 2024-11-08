@@ -12,9 +12,10 @@ useEffect(() => {
   if (listData.products?.length) {
     // Filter out null values from the products array
     const validProducts = listData.products.filter((product): product is ShoppingItem => product !== null);
-    setShoppingList([...shoppingList, ...validProducts]);
+    setShoppingList((currentList) => [...currentList, ...validProducts]);
   }
-}, []);
+}, [listData.products]);
+
 
   const addToList = async (item: ShoppingItem) => {
     await fetch(`/add-product-to-list?productId=${item.id}&listId=${listData.id}`, {method: 'POST'})
