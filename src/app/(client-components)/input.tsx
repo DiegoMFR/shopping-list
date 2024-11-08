@@ -1,7 +1,7 @@
 'use client'
 
 import { FormEvent, useEffect, useState } from "react"
-import { ShoppingItem, ShoppingList } from "../page";
+import { ShoppingItem, ShoppingList } from "../(queries)/products";
 
 export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingItem) => void }) {
 
@@ -32,11 +32,6 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
     useEffect(() => {
         fetchData();
     }, []);
-    
-    useEffect(() => {
-        // this is watch in VUE
-        // fetchData();
-    }, [items]);
 
     const [inputVal, setInputVal] = useState('');
     const [inputTemporary, setInputTemporary] = useState('')
@@ -64,7 +59,9 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
                 <input type="text" name="itemName" className="bg-transparent border border-indigo-500 rounded-md p-2 grow mr-2 text-white" 
                     value={inputVal} 
                     onChange={(e) => setInputVal(e.target.value)} 
-                    onKeyUp={(e) => filterList(e)}/>
+                    onKeyUp={(e) => filterList(e)}
+                    placeholder='Type an item here...'
+                    />
                 <button type="submit" disabled={!inputVal} className="bg-indigo-500 disabled:bg-transparent rounded-md px-4 py-2">Add</button>
             </form>
             {
