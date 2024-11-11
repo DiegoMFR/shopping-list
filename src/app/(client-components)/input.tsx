@@ -19,9 +19,13 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
         }
       };
 
-    const addToList = (itemName: string): ShoppingItem => {
+    const addToList = (): ShoppingItem => {
         const foundItem = items.find(item => item.name === inputVal);
-        const newItem = { name: itemName, id: itemName, icon: 'icon-lalal' };
+        const newItem: ShoppingItem = { 
+            name: foundItem?.name ?? inputVal, 
+            id: foundItem?.id ?? 'default-id', 
+            icon: 'icon-lalal' 
+        };
         if (!foundItem) {
             setItems([...items, newItem]);
             fetch(`/add-product?productName=${newItem.name}&productIcon=${newItem.icon}`, {method: 'POST'})
@@ -38,7 +42,7 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
 
     const submit = (e: FormEvent) => {
         e.preventDefault();
-        handleSubmit(addToList(inputVal));
+        handleSubmit(addToList());
         setInputVal('');
         setInputTemporary('');
     }
