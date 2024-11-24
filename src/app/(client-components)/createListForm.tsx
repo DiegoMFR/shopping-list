@@ -1,7 +1,5 @@
 'use client'
 
-import addList from "../(queries)/lists";
-
 export default function CreateListForm() {
 
 

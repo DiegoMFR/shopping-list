@@ -48,7 +48,7 @@ const List: React.FC<{ listData: ListDataWithProducts }> = ({ listData }) => {
         {shoppingList.size ?
           <ShoppingListComp list={shoppingList} handleClick={handleListClick} /> :
           <div className='text-center text-indigo-300 border-indigo-300 bg-indigo-300/25 border border-dashed rounded p-2 mb-2'>
-            {removedList.size ? <> You've got everything!</> : <>Add some items below...</>}
+            {removedList.size ? "You've got everything!" : "Add some items below..."}
           </div>
         }
         <Input handleSubmit={addToList} />
