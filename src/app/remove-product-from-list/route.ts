@@ -14,5 +14,5 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error }, { status: 500 });
   }
  const products = await getProductsForList(listId);
-  return NextResponse.json(products, { status: 200 });
+  return NextResponse.json(Array.from(products), { status: 200 });
 }

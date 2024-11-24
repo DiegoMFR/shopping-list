@@ -2,15 +2,8 @@ import { sql } from "@vercel/postgres";
 
 export type ShoppingItem = {
   name: string;
-  id: string;
+  id?: string;
   icon: string;
-};
-
-export type ListData = {
-  title: string;
-  id: string;
-  owner: string;
-  products: Array<ShoppingItem | null>;
 };
 
 export type ListedProduct = {
@@ -18,19 +11,19 @@ export type ListedProduct = {
   product: string;
 };
 
-export type ShoppingList = Array<ShoppingItem>;
+export type ShoppingList = Set<ShoppingItem>;
 
 export async function getProductsForList(
   listId: string
-): Promise<(ShoppingItem | null)[]> {
+): Promise<ShoppingList> {
   const { rows } = await sql`SELECT * FROM list_products WHERE list=${listId}`;
 
-  let response: (ShoppingItem | null)[] = [];
+  let response: ShoppingList = new Set();
 
   if (rows.length !== 0) {
     const products = await getProductsById(rows.map(row => row.product ?? null));
     if (products !== null) {
-      response = products;
+      response = new Set(products);
     }
   }
 
@@ -49,11 +42,32 @@ export async function getProductsById(
   if (results.length === 0) {
     return null;
   }
-  return results.map( result => {
+  const res = results.map( result => {
     return {
       id: result.rows[0].id,
       name: result.rows[0].name,
       icon: result.rows[0].icon,
     };
   })
+
+  return new Set(res);
+}
+
+export async function getProducts(): Promise<ShoppingList> {
+  const results = await sql`SELECT * FROM Products;`;
+
+  console.log(results);
+
+  const res = results.rows.map( result => ({
+      id: result.id,
+      name: result.name,
+      icon: result.icon,
+    }))
+  
+    return new Set(res);
+}
+
+export async function saveProduct(productName: string, productIcon: string) {
+  if (!productName || !productIcon) throw new Error('Pet and owner names required');
+  return sql`INSERT INTO Products (Name, Icon) VALUES (${productName}, ${productIcon}) RETURNING id;`;
 }
