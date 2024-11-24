@@ -82,20 +82,20 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
     return (
         <div className="w-full relative">
             <form onSubmit={submit} autoComplete="off" className="flex">
-                <input type="text" name="itemName" className="bg-transparent border border-indigo-500 rounded-md p-2 grow mr-2 text-white"
+                <input type="text" name="itemName" className="bg-transparent border border-indigo-500 rounded-md p-2 grow mr-2 text-indigo-100"
                     value={inputVal}
                     onChange={filterList}
                     placeholder='Type an item here...'
                 />
-                <button type="submit" disabled={!inputVal} className="bg-indigo-500 disabled:bg-transparent disabled:border disabled:text-indigo-900 disabled:border-indigo-500 rounded-md px-4 py-2">Add</button>
+                <button type="submit" disabled={!inputVal} className="bg-indigo-500 text-indigo-100 disabled:bg-transparent disabled:border disabled:border-dashed disabled:text-indigo-500 disabled:border-indigo-500 disabled:bg-indigo-500/25 rounded-md px-4 py-2">Add</button>
             </form>
             {
                 (aiSuggestions.length || isLoadingSuggestions) &&
-                <ul className="p-2 rounded-md bg-indigo-900 mt-2 h-64 overflow-y-auto absolute left-0 right-0">
+                <ul className="p-2 rounded-md bg-purple-900 mt-2 h-64 overflow-y-auto absolute left-0 right-0">
                     {aiSuggestions
                         .map((suggestion, index) => (<li key={index} className="mb-1">
                             <button
-                                className="w-full text-left text-white p-2 border border-indigo-600 bg-transparent hover:bg-indigo-600 active:bg-indigo-700 rounded-md"
+                                className="w-full text-left text-indigo-100 p-2 bg-purple-800 hover:bg-purple-700 active:bg-indigo-700 rounded-md"
                                 onClick={() => handleSuggestion(suggestion)}>
                                 {suggestion}
                             </button>

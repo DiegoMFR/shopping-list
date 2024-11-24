@@ -7,24 +7,24 @@ export default async function Home() {
 
   const lists = await getLists();
 
-  const gridClasses = ['bg-indigo-500', 'rounded-md']
+  const gridClasses = ['bg-indigo-500/75', 'rounded-md']
 
   return (
-    <div className="col-start-2 col-span-4">
+    <div className="col-span-8 md:col-start-2 md:col-span-6">
       <h1>
-        Your grocery lists:
+        Your lists:
 
       </h1>
 
-      <ul className="w-full grid grid-cols-6 auto-rows-max gap-4 items-stretch content-center">
+      <ul className="w-full grid grid-cols-8 auto-rows-max gap-4 items-stretch content-center">
         {lists.map(list =>
-          <li key={list.id} className={gridClasses.join(' ')}>
-           <Link href={`/lists/${list.id}`} className="p-4 centered block">
-                <h2 className="text-lg">{list.title}</h2>
-              </Link>
+          <li key={list.id} className={`${gridClasses.join(' ')} col-span-2`}>
+            <Link href={`/lists/${list.id}`} className="p-4 centered block">
+              <h2 className="text-lg">{list.title}</h2>
+            </Link>
           </li>)}
-        <li className={`${gridClasses.join(' ')} col-span-3`}>
-          <CreateListForm></CreateListForm>
+        <li className={`${gridClasses.join(' ')} col-span-6`}>
+          <CreateListForm/>
         </li>
       </ul>
     </div>

@@ -26,8 +26,6 @@ export async function getSuggestions(input: string) {
 
   stream.done();
 
-  console.log(stream.value);
-
   return { object: stream.value };
 }
 

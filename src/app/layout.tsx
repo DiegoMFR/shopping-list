@@ -26,15 +26,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-indigo-900/75 via-purple-900/75 to-pink-900/75`}
       >
         <main>
-          <div className="grid grid-cols-6 items-center justify-items-center min-h-screen grid-flow-col-dense">
+          <div className="grid grid-cols-8 items-center justify-items-center min-h-screen grid-flow-col-dense p-2">
             {children}
           </div>
         </main>
-        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-          footer content
+        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center text-indigo-500">
+          Created with love in Almere
         </footer>
       </body>
     </html>

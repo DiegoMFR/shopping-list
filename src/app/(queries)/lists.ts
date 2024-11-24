@@ -32,6 +32,7 @@ export async function getLists(): Promise<Array<ListData>> {
       throw new Error('No list found');
     }
 
+    console.log(rows);
     return rows.map(row => {
       const {title, owner, id} = row;
 

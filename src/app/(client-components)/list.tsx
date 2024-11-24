@@ -4,7 +4,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Input from './input';
 import { ShoppingItem, ShoppingList } from '../(queries)/products';
 import { ListDataWithProducts } from '../(queries)/lists';
-import ShoppingListItem from './ShoppingListItem';
+import ShoppingListComp from './ShoppingList';
 
 const List: React.FC<{ listData: ListDataWithProducts }> = ({ listData }) => {
 
@@ -21,7 +21,7 @@ const List: React.FC<{ listData: ListDataWithProducts }> = ({ listData }) => {
 
 
   const addToList = async (item: ShoppingItem) => {
-    await fetch(`/add-product-to-list`, { method: 'POST', body: JSON.stringify({productId: item.id, listId: listData.id}) })
+    await fetch(`/add-product-to-list`, { method: 'POST', body: JSON.stringify({ productId: item.id, listId: listData.id }) })
     setShoppingList(new Set([...Array.from(shoppingList), item]));
   };
 
@@ -31,7 +31,7 @@ const List: React.FC<{ listData: ListDataWithProducts }> = ({ listData }) => {
     setShoppingList(new Set(res));
     setRemovedList(new Set(removedList.add(item)));
   }
-  
+
   const handleRemovedClick = async (item: ShoppingItem) => {
     await addToList(item);
     setRemovedList(prev => {
@@ -43,16 +43,24 @@ const List: React.FC<{ listData: ListDataWithProducts }> = ({ listData }) => {
   return (
     <div className="w-full">
       <h1 className='p-2 text-indigo-300 text-xl'>{listData.title}</h1>
-      {shoppingList.size === 0 && removedList.size > 0 && <h2 className='p-2'> All done! </h2>}
-      <ul className="w-full p-0 m-0 place-content-center grow">
-        {Array.from(shoppingList).map((item: ShoppingItem) => (<ShoppingListItem key={item.id} listItem={item} handleClick={handleListClick} />))}
-        <li>
-          <Input handleSubmit={addToList} />
-        </li>
-      </ul>
-      <ul className="w-full p-0 m-0 place-content-center grow pt-2">
-        {Array.from(removedList).map((item: ShoppingItem) => (<ShoppingListItem key={item.id} listItem={item} handleClick={handleRemovedClick} theme='deleted' />))}
-      </ul>
+      <section>
+        <h2 className='pt-4 p-2 text-indigo-100 text-l'>To buy:</h2>
+        {shoppingList.size ?
+          <ShoppingListComp list={shoppingList} handleClick={handleListClick} /> :
+          <div className='text-center text-indigo-300 border-indigo-300 bg-indigo-300/25 border border-dashed rounded p-2 mb-2'>
+            {removedList.size ? <> You've got everything!</> : <>Add some items below...</>}
+          </div>
+        }
+        <Input handleSubmit={addToList} />
+      </section>
+      <section>
+        <h2 className='pt-4 p-2 text-indigo-100 text-l'>In my basket:</h2>
+        {removedList.size ?
+          <ShoppingListComp list={removedList} handleClick={handleRemovedClick} theme='deleted' /> :
+          <div className='text-center text-indigo-500 border-indigo-500 bg-indigo-500/25 border border-dashed rounded p-2 mt-2'>Nothing yet...</div>
+        }
+      </section>
+
     </div>
   );
 };

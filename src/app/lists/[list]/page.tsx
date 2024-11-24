@@ -8,7 +8,7 @@ export default async function Page ({ params } : { params: Promise<{list: string
     const list = await getListWithProducts(listId);
 
 return (
-    <div className="flex flex-col col-span-4 gap-8 col-start-2 col-start-2 items-center sm:items-start w-full">
+    <div className="flex flex-col col-span-8 md:col-span-6 gap-4 md:col-start-2 items-center md:items-start w-full">
         <List listData={list}/>
     </div>
 )
