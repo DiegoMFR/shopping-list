@@ -59,7 +59,7 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
     const filterList = async (e: ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
         setInputVal(value);
-        if(value.length > 3 && !isLoadingSuggestions) {
+        if(value.length > 2 && !isLoadingSuggestions) {
             setIsLoadingSuggestions(true);
             const { object } = await getSuggestions(e.target.value);
 
