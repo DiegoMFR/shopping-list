@@ -1,5 +1,5 @@
 import Link from "next/link";
-import addList, { getLists } from "./(queries)/lists";
+import { getLists } from "./(queries)/lists";
 import CreateListForm from "./(client-components)/createListForm";
 
 
