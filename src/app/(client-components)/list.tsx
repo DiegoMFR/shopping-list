@@ -51,10 +51,10 @@ const List: React.FC<{ listData: ListDataWithProducts }> = ({ listData }) => {
             {removedList.size ? "You've got everything!" : "Add some items below..."}
           </div>
         }
-        <Input handleSubmit={addToList} />
+        <Input handleSubmit={addToList} topics={[listData.title]}/>
       </section>
       <section>
-        <h2 className='pt-4 p-2 text-indigo-100 text-l'>In my basket:</h2>
+        <h2 className='pt-4 p-2 text-indigo-100 text-l'>In the basket:</h2>
         {removedList.size ?
           <ShoppingListComp list={removedList} handleClick={handleRemovedClick} theme='deleted' /> :
           <div className='text-center text-indigo-500 border-indigo-500 bg-indigo-500/25 border border-dashed rounded p-2 mt-2'>Nothing yet...</div>

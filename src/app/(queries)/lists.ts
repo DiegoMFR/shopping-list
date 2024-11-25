@@ -26,10 +26,10 @@ export default async function addList(name: string, owner: string) {
 }
 
 
-export async function getLists(): Promise<Array<ListData>> {
+export async function getLists(): Promise<Array<ListData | null>> {
     const { rows } = await sql`SELECT * FROM Lists`;
     if (rows.length === 0) {
-      throw new Error('No list found');
+      return [];
     }
 
     console.log(rows);
@@ -45,10 +45,10 @@ export async function getLists(): Promise<Array<ListData>> {
     })
   }
 
-  export async function getListWithProducts(id: string): Promise<ListDataWithProducts> {
+  export async function getListWithProducts(id: string): Promise<ListDataWithProducts | null> {
     const { rows } = await sql`SELECT id, title, owner FROM Lists WHERE id=${id}`;
     if (rows.length === 0) {
-      throw new Error('No list found');
+      return null;
     }
   
     const {title, owner} = rows[0];

@@ -5,7 +5,12 @@ import { ShoppingItem, ShoppingList } from "../(queries)/products";
 import { addEmoji, getSuggestions } from "../(queries)/ai-actions";
 import { readStreamableValue } from 'ai/rsc';
 
-export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingItem) => void }) {
+interface InputProps {
+    handleSubmit: (item: ShoppingItem) => void;
+    topics: string[];
+}
+
+const Input: React.FC<InputProps> = ({ handleSubmit, topics = ['general'] }) => {
 
 
     const [items, setItems] = useState<ShoppingList>(new Set());
@@ -61,7 +66,7 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
         setInputVal(value);
         if(value.length > 2 && !isLoadingSuggestions) {
             setIsLoadingSuggestions(true);
-            const { object } = await getSuggestions(e.target.value);
+            const { object } = await getSuggestions(e.target.value, topics);
 
             for await (const partialObject of readStreamableValue(object)) {
                 if (partialObject) {
@@ -108,4 +113,6 @@ export default function Input({ handleSubmit }: { handleSubmit: (item: ShoppingI
         </div>
 
     )
-}
+};
+
+export default Input;
