@@ -107,7 +107,7 @@ const Input: React.FC<InputProps> = ({ handleSubmit, topics = ['general'] }) => 
                         </li>)
                         )
                     }
-                    {isLoadingSuggestions && <li key="loadingMore">Loading...</li>}
+                    {isLoadingSuggestions && <li className="p-2" key="loadingMore">Loading...</li>}
                 </ul>
             }
         </div>
