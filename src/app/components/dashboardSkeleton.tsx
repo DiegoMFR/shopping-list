@@ -1,4 +1,4 @@
-const DashboardSkeleton: React.FC = async () => {
+const DashboardSkeleton: React.FC = (): JSX.Element => {
     const gridClasses = ['bg-indigo-500/75', 'rounded-md']
 
     return (

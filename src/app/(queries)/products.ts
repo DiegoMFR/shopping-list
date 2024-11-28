@@ -36,8 +36,6 @@ export async function getProductsById(
 ): Promise<ShoppingList | null> {
   
   const results = await Promise.all(products.map(product => sql`SELECT * FROM Products WHERE id=${product} FETCH FIRST ROW ONLY;`))
-  
-  console.log('333', results);
 
   if (results.length === 0) {
     return null;

@@ -1,4 +1,4 @@
-import List from "../../(client-components)/list";
+import List from "../../components/list";
 import { getListWithProducts } from "../../(queries)/lists";
 
 

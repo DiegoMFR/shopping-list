@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import Dashboard from "./(client-components)/dashboard";
-import DashboardSkeleton from "./(client-components)/dashboardSkeleton";
+import Dashboard from "./components/dashboard";
+import DashboardSkeleton from "./components/dashboardSkeleton";
 
 
 export default async function Home() {
