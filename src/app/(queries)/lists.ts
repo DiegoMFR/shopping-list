@@ -1,15 +1,6 @@
 import { sql } from "@vercel/postgres";
-import { getProductsForList, ShoppingItem } from "./products";
+import { getProductsForList } from "./products";
 
-export type ListData = {
-  title: string;
-  id: string;
-  owner: string;
-};
-
-export type ListDataWithProducts = ListData & {
-  products: Set<ShoppingItem | null>;
-};
 
 export default async function addList(name: string, owner: string) {
   const { rows } = await sql`

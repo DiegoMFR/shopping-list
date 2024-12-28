@@ -1,5 +1,3 @@
-import { ShoppingItem } from "../(queries)/products"
-
 interface ShoppingListItem { 
     listItem: ShoppingItem
     theme?: 'added' | 'deleted'

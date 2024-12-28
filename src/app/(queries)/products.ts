@@ -1,18 +1,5 @@
 import { sql } from "@vercel/postgres";
 
-export type ShoppingItem = {
-  name: string;
-  id?: string;
-  icon: string;
-};
-
-export type ListedProduct = {
-  list: string;
-  product: string;
-};
-
-export type ShoppingList = Set<ShoppingItem>;
-
 export async function getProductsForList(
   listId: string
 ): Promise<ShoppingList> {

@@ -2,8 +2,6 @@
 
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Input from './input';
-import { ShoppingItem, ShoppingList } from '../(queries)/products';
-import { ListDataWithProducts } from '../(queries)/lists';
 import ShoppingListComp from './ShoppingList';
 
 const List: React.FC<{ listData: ListDataWithProducts }> = ({ listData }) => {

@@ -1,4 +1,3 @@
-import { ShoppingItem, ShoppingList } from "../(queries)/products"
 import ShoppingListItem from "./ShoppingListItem";
 
 interface ShoppingListCompProps {

@@ -1,7 +1,6 @@
 'use client'
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
-import { ShoppingItem, ShoppingList } from "../(queries)/products";
 import { addEmoji, getSuggestions } from "../(queries)/ai-actions";
 import { readStreamableValue } from 'ai/rsc';
 
