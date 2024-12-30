@@ -19,4 +19,10 @@ type ListedProduct = {
   product: string;
 };
 
-type ShoppingList = Set<ShoppingItem>;
+type ShoppingList = Set<ShoppingItem>
+
+interface User {
+  id: string;
+  email: string;
+  // Add other properties as needed
+}

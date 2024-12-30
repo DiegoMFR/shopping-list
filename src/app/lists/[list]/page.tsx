@@ -2,7 +2,7 @@ import List from "../../components/list";
 import { getListWithProducts } from "../../(queries)/lists";
 
 
-export default async function Page({ params }: { params: Promise<{ list: string }> }) {
+export default async function Page({ params }: { readonly params: Promise<{ list: string }> }) {
 
     const listId = (await params).list
     const list = await getListWithProducts(listId);
