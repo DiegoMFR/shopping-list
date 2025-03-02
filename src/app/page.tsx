@@ -10,7 +10,6 @@ export default async function Home() {
       <h1 className="text-2xl p-2 pb-4 text-indigo-300">
         Your lists:
       </h1>
-      {/* <DashboardSkeleton/> */}
       <Suspense fallback={<DashboardSkeleton/>}>
         <Dashboard />
       </Suspense>
