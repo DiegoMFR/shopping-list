@@ -1,5 +1,5 @@
 import List from "../../components/list";
-import { getListWithProducts } from "../../(queries)/lists";
+import { getListWithProducts } from "../../_queries/lists";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 

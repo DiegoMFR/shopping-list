@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { saveProduct } from '../(queries)/products';
+import { saveProduct } from '../_queries/products';
  
 export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getProducts } from '../(queries)/products';
+import { getProducts } from '../_queries/products';
  
 export async function GET() {
   const products = await getProducts();

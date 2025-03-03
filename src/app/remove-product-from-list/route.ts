@@ -1,6 +1,6 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
-import { getProductsForList } from '../(queries)/products';
+import { getProductsForList } from '../_queries/products';
  
 export async function DELETE(request: Request) {
   const { searchParams } = new URL(request.url);

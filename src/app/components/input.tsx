@@ -1,7 +1,7 @@
 'use client'
 
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
-import { addEmoji, getSuggestions } from "../(queries)/ai-actions";
+import { addEmoji, getSuggestions } from "../_queries/ai-actions";
 import { readStreamableValue } from 'ai/rsc';
 
 interface InputProps {

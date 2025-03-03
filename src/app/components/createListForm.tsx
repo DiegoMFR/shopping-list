@@ -1,6 +1,6 @@
 'use client'
 
-import { addEmoji } from "../(queries)/ai-actions";
+import { addEmoji } from "../_queries/ai-actions";
 
 export default function CreateListForm() {
 

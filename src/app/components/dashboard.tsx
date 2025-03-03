@@ -1,9 +1,9 @@
 import Link from "next/link";
 import CreateListForm from "./createListForm";
-import { getLists } from "../(queries)/lists";
+import { getLists } from "../_queries/lists";
 
 const Dashboard = async (): Promise<JSX.Element> => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // await new Promise(resolve => setTimeout(resolve, 1000));
     const lists = await getLists();
     const gridClasses = ['bg-indigo-500/75', 'rounded-md']
 

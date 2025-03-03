@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { updateList } from '../(queries)/lists';
+import { updateList } from '../_queries/lists';
  
 export async function POST(request: Request) {
   const { productId, listId} = await request.json();

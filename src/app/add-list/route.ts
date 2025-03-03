@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import addList from '../(queries)/lists';
+import addList from '../_queries/lists';
  
 export async function POST(request: Request) {
     const { searchParams } = new URL(request.url);

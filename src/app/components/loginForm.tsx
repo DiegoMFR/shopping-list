@@ -1,7 +1,7 @@
 'use client'
 
 import { useActionState, useState } from "react";
-import { authenticate } from "../(queries)/auth";
+import { authenticate } from "../_queries/auth";
 
 const LoginForm: React.FC = () => {
     const [logging, setLogging] = useState<boolean>(false);
